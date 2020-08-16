@@ -1,6 +1,10 @@
 # hotels-result-currency
-@vue/cli 4.5.3
-npm 6.14.6
+
+## Prerequisites
+```
+@vue/cli >= 4.5.3
+npm >= 6.14.6
+```
 
 ## Project setup
 ```
