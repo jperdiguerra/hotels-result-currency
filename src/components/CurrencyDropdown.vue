@@ -16,9 +16,11 @@ export default {
   data() {
     return {
       choices: ['USD', 'SGD', 'CNY', 'KRW'],
-      defaultCurrency: 'USD',
       selected: ''
     };
+  },
+  props: {
+    defaultCurrency: String
   },
   methods: {
     onInput() {

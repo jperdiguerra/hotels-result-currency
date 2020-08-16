@@ -1,6 +1,9 @@
 <template>
   <div id="app" class="container">
-    <CurrencyDropdown @currency-change="onCurrencyChange"></CurrencyDropdown>
+    <CurrencyDropdown
+      @currency-change="onCurrencyChange"
+      :defaultCurrency="currency"
+    ></CurrencyDropdown>
     <HotelList class="hotel-list" :currency="currency"></HotelList>
   </div>
 </template>
