@@ -1,17 +1,42 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="app" class="container">
+    <CurrencyDropdown @currency-change="onCurrencyChange"></CurrencyDropdown>
+    <HotelList class="hotel-list" :currency="currency"></HotelList>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import { mapActions } from 'vuex';
+import CurrencyDropdown from './components/CurrencyDropdown';
+import HotelList from './components/HotelList';
 
 export default {
   name: 'App',
+  data() {
+    return {
+      currency: '',
+    };
+  },
   components: {
-    HelloWorld
+    CurrencyDropdown,
+    HotelList
+  },
+  methods: {
+    ...mapActions(['fetchHotels', 'fetchPrices']),
+    onCurrencyChange(value) {
+      this.currency = value;
+      this.fetchPrices(this.currency);
+    },
+  },
+  created() {
+    if(localStorage.currency) this.currency = localStorage.currency;
+    this.fetchHotels();
+    this.fetchPrices(this.currency);
+  },
+  watch: {
+    currency(newCurrency) {
+      localStorage.currency = newCurrency;
+    }
   }
 }
 </script>
@@ -24,5 +49,9 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+.hotel-list {
+  margin-top: 30px;
 }
 </style>
