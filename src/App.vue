@@ -14,7 +14,7 @@ export default {
   name: 'App',
   data() {
     return {
-      currency: '',
+      currency: 'USD',
     };
   },
   components: {

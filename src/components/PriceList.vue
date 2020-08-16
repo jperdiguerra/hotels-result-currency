@@ -1,12 +1,12 @@
 <template>
   <div>
     <div class="bg-success price">
-      <strong>{{ priceDisplay }}</strong>
+      <strong>{{ priceDisplay }}</strong><sup v-if="taxesAndFees">*</sup>
       <div class="tax-fees" name="tax-fees"
         v-if="taxesAndFees"
         v-tooltip.top-center="taxesAndFeesTooltip"
       >
-        Price includes taxes and fees!
+        * Price includes taxes and fees!
       </div>
     </div>
 
@@ -108,6 +108,10 @@ export default {
 </script>
 
 <style scoped>
+sup {
+  top: -4px;
+}
+
 .price {
   color: white;
   padding: 10px;
