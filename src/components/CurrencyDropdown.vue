@@ -4,7 +4,7 @@
       class="dropdown"
       v-model="selected"
       :options="choices"
-      placeholder="-- Select Currency --"
+      :placeholder="defaultCurrency"
       @input="onInput"
     ></vue-select>
   </div>
